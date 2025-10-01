@@ -12,3 +12,4 @@ const store = configureStore({
 export default store
 
 export * from './thunks/fetchUsers'
+export * from './thunks/addUsers'
