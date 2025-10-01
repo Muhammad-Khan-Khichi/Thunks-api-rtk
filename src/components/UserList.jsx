@@ -1,36 +1,29 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
 import { fetchUsers, addUser } from "../Store";
 import Lottie from "lottie-react";
 import Loader from "../Loader.json";
 import errorLoader from "../error.json"
+import { useThunk } from "../Thunks/use-thunks";
+
+
 
 function UserList() {
 
-    const [isLoadingUsers, setIsLoadingUsers] = useState(false)
-    const [loadingUsersError, setLoadingUsersError] = useState(null)
-     
-    const dispatch = useDispatch();
+    const [doFetchUsers, isLoadingUsers, loadingUsersError] = useThunk(fetchUsers)
+    const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser)
+    
     const {data} = useSelector((state) => {
         return state.users
 })
 
     useEffect(() => {
-        setIsLoadingUsers(true)
-        dispatch(fetchUsers())
-        .unwrap()
-        .catch((err) => {
-            setLoadingUsersError(err)
-            setIsLoadingUsers(false)
-        })
-        .finally(() => {
-            setIsLoadingUsers(false)
-        })
-    }, [dispatch]);
+        doFetchUsers()
+    }, [doFetchUsers]);
 
-    const handleUserAdd = () => [
-        dispatch(addUser())
-    ]
+    const handleUserAdd = () => {
+        doCreateUser()
+    }
 
     if(isLoadingUsers){
         return <div className="w-fit h-screen">
@@ -87,3 +80,57 @@ return (
 }
 
 export default UserList
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function AddUserButton({ handleUserAdd }) {
+//   const [isCreating, setIsCreating] = useState(false);
+
+//   const handleClick = async () => {
+//     setIsCreating(true);
+//     try {
+//       await handleUserAdd(); // wait for the user creation process
+//     } finally {
+//       setIsCreating(false);
+//     }
+//   };
+
+//   return (
+//     <button
+//       disabled={isCreating}
+//       onClick={handleClick}
+//       className={`w-full sm:w-auto px-4 py-2 rounded-lg shadow transition 
+//         ${isCreating 
+//           ? "bg-gray-400 text-gray-200 cursor-not-allowed" 
+//           : "bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer"}`}
+//     >
+//       {isCreating ? "Creating User..." : "+ Add User"}
+//     </button>
+//   );
+// }
+
+// export default AddUserButton;
