@@ -13,3 +13,4 @@ export default store
 
 export * from './thunks/fetchUsers'
 export * from './thunks/addUsers'
+export * from './thunks/removeUser'

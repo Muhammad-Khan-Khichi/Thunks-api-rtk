@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import Loader from "../Loader.json";
 import errorLoader from "../error.json"
 import { useThunk } from "../Thunks/use-thunks";
+import UserListItem from "./UserListItem";
 
 
 
@@ -39,18 +40,7 @@ function UserList() {
 
 const renderedUsers = data.map((user) => {
   return (
-<div
-  key={user.id}
-  className="w-full max-w-xs sm:w-64 md:w-72 lg:w-80 
-             mx-auto p-4 sm:p-6 bg-white shadow-md rounded-2xl 
-             border border-gray-200 hover:shadow-xl 
-             hover:-translate-y-1 transition-transform duration-300"
->
-  <p className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 text-center">
-    {user.name}
-  </p>
-</div>
-
+    <UserListItem key={user.id} user={user}/>
 
   )
 })
