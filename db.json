@@ -9,6 +9,12 @@
       "name": "Gregg MacGyver"
     }
   ],
-  "album": [],
+  "album": [
+    {
+      "id": 10,
+      "title": "Hiking Trip",
+      "userId": "c8c3"
+    }
+  ],
   "photos": []
 }
