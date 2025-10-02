@@ -1,5 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "83c8",
+      "name": "Bill Hahn"
+    },
+    {
+      "id": "c8c3",
+      "name": "Gregg MacGyver"
+    }
+  ],
   "album": [],
   "photos": []
 }
