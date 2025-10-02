@@ -23,4 +23,7 @@ export default store
 export * from './thunks/fetchUsers'
 export * from './thunks/addUsers'
 export * from './thunks/removeUser'
-export {useFetchAlbumQuery} from './apis/albumApi'
+export {useFetchAlbumQuery,  
+     useAddAlbumMutation,
+     useRemoveAlbumMutation,
+} from './apis/albumApi'
